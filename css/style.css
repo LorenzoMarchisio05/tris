@@ -1,0 +1,16 @@
+/* ---------- box-sizing and resets ------------- */
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+/* ---------- start writing here ------------- */
