@@ -6,6 +6,8 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    transition: background-color 350ms;
+    color: var(--accent-color);
 }
 
 html,
@@ -13,4 +15,107 @@ body {
     height: 100%;
 }
 
+:root {
+    --bg-color: rgb(230, 230, 230);
+    --accent-color: rgb(35, 35, 35);
+}
+
 /* ---------- start writing here ------------- */
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-color);
+}
+
+header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: rgb(0 0 0 / 0.05);
+    padding-block-end: 1rem;
+}
+
+header h1 {
+    flex-grow: 1;
+    height: fit-content;
+    margin-block: auto;
+    padding-inline-start: 1rem;
+}
+
+.controls {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-inline: 5px;
+}
+
+.light-dark-toggle {
+    opacity: 0;
+    position: absolute;
+}
+
+body.dark {
+    --bg-color: rgb(35, 35, 35);
+    --accent-color: rgb(230, 230, 230);
+}
+
+.mode-label {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #111;
+    border-radius: 100vmax;
+    cursor: pointer;
+}
+
+.mode-label div {
+    color: #f1c40f;
+}
+
+.ball {
+    width: 25px;
+    height: 25px;
+    border-radius: 100vmax;
+    left: 2px;
+    background-color: var(--bg-color);
+    position: absolute;
+    transition: transform 350ms linear, background-color 0s;
+}
+
+.ball.dark {
+    transform: translateX(125%);
+}
+
+.board {
+    margin: auto;
+    width: fit-content;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+
+    grid-template-columns: repeat(3, auto);
+}
+
+.cell {
+    width: 150px;
+    aspect-ratio: 1;
+    background-color: var(--bg-color);
+    color: var(--accent-color);
+    font-size: 100px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.cell:not(:nth-child(3n)) {
+    border-right: 1px solid var(--accent-color);
+}
+
+.cell:not(:nth-last-child(-n + 3)) {
+    border-bottom: 1px solid var(--accent-color);
+}
